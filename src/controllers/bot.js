@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const fs = require('fs')
 const mysql = require('../database/db')
 
-const base = 'url'
+const base = 'https://'
 
 const botsantista = async (url = base) => {
     const { data: body } = await axios.get(url)
@@ -35,7 +35,7 @@ const botsantista = async (url = base) => {
               productsResponse.price
              ]});
             
-        mysql.execute(`INSERT INTO tb_products(price, name) VALUES ?`, [values], function (error, results, fields) {
+        mysql.execute(`INSERT INTO tb_products(name, price) VALUES ?`, [values], function (error, results, fields) {
             if (error) throw error;
             // console.log(results)
             return res.send(results);
@@ -54,7 +54,7 @@ const getBot = async (req, res, next) => {
         if (req.query.produto) {
             produto = req.query.produto
         }
-        const query = `SELECT * FROM tb_base2`;
+        const query = `SELECT * FROM tb_products`;
         const result = await mysql.execute(query)
         return res.status(200).send(result);
     } catch (error) {

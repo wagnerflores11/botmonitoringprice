@@ -3,7 +3,7 @@ const router = express.Router();
 
 const bot = require('./controllers/bot')
 
-router.get('/bot', bot.getBot)
+router.get('/getbot', bot.getBot)
 router.post('/bot', bot.botsantista)
 
 module.exports = router;

@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 })
 
 
-app.use('/', route);
+app.use('/bot', route);
 
 
 app.use((req, res, next) => {
