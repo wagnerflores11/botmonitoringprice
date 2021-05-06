@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const fs = require('fs')
 const mysql = require('../database/db')
 
-const base = 'https://santistadecora.com.br/vm/travesseiros'
+const base = 'url'
 
 const botsantista = async (url = base) => {
     const { data: body } = await axios.get(url)
